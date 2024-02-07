@@ -9,7 +9,7 @@ export class Focus {
   id: string;
 
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User' }) // 참조 필드 추가
-  user_id: string;
+  userId: string;
 
   @Prop()
   name: string;
