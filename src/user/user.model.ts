@@ -3,7 +3,7 @@ export interface UserDto {
   name: string;
   email: string;
   password: string;
-  profile_image_path: string;
+  profileImagePath: string;
   bio: string;
   created_at: Date;
   updated_at?: Date;

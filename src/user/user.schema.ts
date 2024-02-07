@@ -18,7 +18,7 @@ export class User {
   password: string;
 
   @Prop()
-  profile_image_path: string;
+  profileImagePath: string;
 
   @Prop({ default: '아직 소개말이 없습니다.' })
   bio: string;
