@@ -11,6 +11,9 @@ export class Task {
   @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'Goal' })
   goalId: string;
 
+  @Prop()
+  content: string;
+
   @Prop({ default: false })
   isCompleted: boolean;
 
