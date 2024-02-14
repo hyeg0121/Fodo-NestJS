@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Task, TaskDocument } from "./task.schema";
-import { Model } from "mongoose";
-import { TaskDto } from "./task.model";
+import { Task, TaskDocument } from './task.schema';
+import { Model } from 'mongoose';
+import { TaskDto } from './task.model';
 
 @Injectable()
 export class TaskRepository {
-  constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {
-  }
+  constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
 
   // 모든 할 일 조회
   async getAllTasks(): Promise<Task[]> {
@@ -29,10 +28,12 @@ export class TaskRepository {
   async updateTask(id: string, taskDto: TaskDto): Promise<TaskDto> {
     const updatedTask = {
       ...taskDto,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
 
-    const result = await this.taskModel.findByIdAndUpdate(id, updatedTask, { new: true});
+    const result = await this.taskModel.findByIdAndUpdate(id, updatedTask, {
+      new: true,
+    });
 
     return result ? result.toObject() : null;
   }
