@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Goal, GoalDocument } from './goal.schema';
 import { Model } from 'mongoose';
-import { GoalDto } from "./goal.model";
+import { GoalDto } from './goal.model';
 
 @Injectable()
 export class GoalRepository {
@@ -31,7 +31,9 @@ export class GoalRepository {
       updatedAt: new Date(),
     };
 
-    const result = await this.goalModel.findByIdAndUpdate(id, updatedGoal, { new: true });
+    const result = await this.goalModel.findByIdAndUpdate(id, updatedGoal, {
+      new: true,
+    });
 
     return result ? result.toObject() : null;
   }
@@ -47,5 +49,4 @@ export class GoalRepository {
 
     await this.goalModel.findByIdAndUpdate(id, deletedGoal);
   }
-
 }
