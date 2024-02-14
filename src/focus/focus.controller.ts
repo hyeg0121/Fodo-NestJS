@@ -13,7 +13,7 @@ export class FocusController {
   }
 
   @Get('/:id')
-  getFocus(@Param('id') id: string) {
+  getFocusById(@Param('id') id: string) {
     return this.focusService.getFocusById(id);
   }
 
