@@ -17,7 +17,7 @@ export class GoalController {
   // id로 목표 조회
   @Get('/:id')
   getGoalById(@Param('id') id: string) {
-    return this.getGoalById(id);
+    return this.goalService.getGoalById(id);
   }
 
   // 목표 생성
