@@ -23,4 +23,4 @@ export class Goal {
   isDeleted: boolean;
 }
 
-export class GoalSchema = SchemaFactory.createForClass(Goal);
+export const GoalSchema = SchemaFactory.createForClass(Goal);
