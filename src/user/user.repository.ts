@@ -1,8 +1,8 @@
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { User, UserDocument } from './user.schema';
-import { Injectable } from '@nestjs/common';
-import { UserDto } from './user.model';
+import { InjectModel } from "@nestjs/mongoose";
+import { Model } from "mongoose";
+import { User, UserDocument } from "./user.schema";
+import { Injectable } from "@nestjs/common";
+import { CreateUserDto, UserDto } from "./user.model";
 
 @Injectable()
 export class UserRepository {
@@ -19,13 +19,8 @@ export class UserRepository {
   }
 
   // 유저 생성
-  async createUser(userDto: UserDto): Promise<UserDto> {
-    const user = {
-      ...userDto,
-    };
-
-    await this.userModel.create(user);
-    return user;
+  async createUser(userDto: CreateUserDto): Promise<UserDto> {
+    return await this.userModel.create(userDto);
   }
 
   // 유저 업데이트
