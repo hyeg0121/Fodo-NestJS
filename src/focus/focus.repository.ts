@@ -22,12 +22,7 @@ export class FocusRepository {
 
   // 포커스 생성
   async createFocus(focusDto: FocusDto): Promise<FocusDto> {
-    const focus = {
-      ...focusDto,
-    };
-
-    await this.focusModel.create(focus);
-    return focus;
+    return await this.focusModel.create(focusDto);
   }
 
   // 포커스 업데이트

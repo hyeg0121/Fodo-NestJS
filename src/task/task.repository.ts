@@ -21,7 +21,7 @@ export class TaskRepository {
   // 할 일 생성
   async createTask(taskDto: TaskDto): Promise<TaskDto> {
     const createdTask = await this.taskModel.create(taskDto);
-    return createdTask.toObject();
+    return await this.taskModel.create(taskDto);
   }
 
   // 할 일 업데이트

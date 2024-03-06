@@ -22,8 +22,7 @@ export class FocusRecordRepository {
 
   // 포커스 레코드 생성
   async createFocusRecord(focusRecordDto: FocusRecordDto): Promise<FocusRecordDto> {
-    const createdFocueRecord = await this.focusRecordModel.create(focusRecordDto);
-    return createdFocueRecord;
+    return await this.focusRecordModel.create(focusRecordDto);
   }
 
   // 포커스 레코드 업데이트

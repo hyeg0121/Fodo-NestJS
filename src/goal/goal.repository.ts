@@ -20,8 +20,7 @@ export class GoalRepository {
 
   // 목표 생성
   async createGoal(goalDto: GoalDto): Promise<GoalDto> {
-    const createdGoal = await this.goalModel.create(goalDto);
-    return createdGoal.toObject();
+    return await this.goalModel.create(goalDto);
   }
 
   // 목표 업데이트
