@@ -3,7 +3,7 @@ import { FocusRecordController } from './focus-record.controller';
 import { FocusRecordService } from './focus-record.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FocusRecordRepository } from './focus-record.repository';
-import { FocusRecord, FocusRecordSchema } from "./focus-record-schema";
+import { FocusRecord, FocusRecordSchema } from "./focus-record.schema";
 
 @Module({
   imports: [
