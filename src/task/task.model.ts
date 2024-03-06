@@ -5,5 +5,5 @@ export interface TaskDto {
   content: string;
   createdAt: Date;
   updatedAt: Date;
-  idsDeleted: boolean;
+  isDeleted: boolean;
 }

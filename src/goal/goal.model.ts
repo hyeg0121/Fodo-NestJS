@@ -4,5 +4,5 @@ export interface GoalDto {
   content: string;
   createdAt: Date;
   updatedAt: Date;
-  idsDeleted: boolean;
+  isDeleted: boolean;
 }

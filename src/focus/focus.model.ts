@@ -5,5 +5,5 @@ export interface FocusDto {
   description: string;
   createdAt: Date;
   updatedAt: Date;
-  idsDeleted: boolean;
+  isDeleted: boolean;
 }
