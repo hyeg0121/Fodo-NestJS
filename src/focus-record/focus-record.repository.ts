@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FocusRecord, FocusRecordDocument } from './focus-record-schema';
+import { FocusRecord, FocusRecordDocument } from './focus-record.schema';
 import { Model } from 'mongoose';
 import { FocusRecordDto } from './focus-record.model';
 
@@ -22,12 +22,8 @@ export class FocusRecordRepository {
 
   // 포커스 레코드 생성
   async createFocusRecord(focusRecordDto: FocusRecordDto): Promise<FocusRecordDto> {
-    const focusRecord = {
-      ...focusRecordDto,
-    };
-    console.log(focusRecordDto)
-    await this.focusRecordModel.create(focusRecord);
-    return focusRecord;
+    const createdFocueRecord = await this.focusRecordModel.create(focusRecordDto);
+    return createdFocueRecord;
   }
 
   // 포커스 레코드 업데이트
