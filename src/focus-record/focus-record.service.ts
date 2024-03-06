@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FocusRecordRepository } from './focus-record.repository';
-import { FocusRecord } from './focus-record-schema';
+import { FocusRecord } from './focus-record.schema';
 import { FocusRecordDto } from './focus-record.model';
 
 @Injectable()
