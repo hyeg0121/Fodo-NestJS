@@ -6,5 +6,5 @@ export interface FocusRecordDto {
   uploadedImagePath: string;
   createdAt: Date;
   updatedAt: Date;
-  idsDeleted: boolean;
+  isDeleted: boolean;
 }
