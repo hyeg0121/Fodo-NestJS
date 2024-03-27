@@ -1,9 +1,13 @@
+import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type FocusDocument = Focus & Document;
 
-@Schema()
+const options: SchemaOptions = {
+  timestamps: true
+}
+
+@Schema(options)
 export class Focus {
   @Prop()
   id: string;
@@ -16,12 +20,6 @@ export class Focus {
 
   @Prop()
   description: string;
-
-  @Prop({ default: Date.now })
-  createdAt: Date;
-
-  @Prop({ default: Date.now })
-  updatedAt: Date;
 
   @Prop({ default: false })
   isDeleted: boolean;

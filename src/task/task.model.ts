@@ -3,7 +3,5 @@ export interface TaskDto {
   goalId: string;
   isCompleted: boolean;
   content: string;
-  createdAt: Date;
-  updatedAt: Date;
   isDeleted: boolean;
 }

@@ -7,8 +7,6 @@ export interface UserDto {
   password: string;
   profileImagePath: string;
   bio: string;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export class CreateUserDto {

@@ -1,8 +1,13 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 
 export type GoalDocument = Goal & Document;
-@Schema()
+
+const options: SchemaOptions = {
+  timestamps: true
+}
+
+@Schema(options)
 export class Goal {
   @Prop()
   id: string;

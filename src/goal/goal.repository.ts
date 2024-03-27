@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Goal, GoalDocument } from './goal.schema';
 import { Model } from 'mongoose';
 import { GoalDto } from './goal.model';
+import { Goal, GoalDocument } from './goal.schema';
 
 @Injectable()
 export class GoalRepository {
@@ -25,16 +25,7 @@ export class GoalRepository {
 
   // 목표 업데이트
   async updateGoal(id: string, goalDto: GoalDto): Promise<GoalDto> {
-    const updatedGoal = {
-      ...goalDto,
-      updatedAt: new Date(),
-    };
-
-    const result = await this.goalModel.findByIdAndUpdate(id, updatedGoal, {
-      new: true,
-    });
-
-    return result ? result.toObject() : null;
+    return await this.goalModel.findByIdAndUpdate(id, goalDto);
   }
 
   // 목표 삭제

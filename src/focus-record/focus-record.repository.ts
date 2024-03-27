@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { FocusRecord, FocusRecordDocument } from './focus-record.schema';
 import { Model } from 'mongoose';
 import { FocusRecordDto } from './focus-record.model';
+import { FocusRecord, FocusRecordDocument } from './focus-record.schema';
 
 @Injectable()
 export class FocusRecordRepository {
@@ -27,13 +27,7 @@ export class FocusRecordRepository {
 
   // 포커스 레코드 업데이트
   async updateFocusRecord(id: string, focusRecordDto: FocusRecordDto) : Promise<FocusRecordDto> {
-    const updatedFocusRecord = {
-      ...focusRecordDto,
-      updatedAt: new Date(),
-    };
-    await this.focusRecordModel.findByIdAndUpdate(id, updatedFocusRecord);
-
-    return updatedFocusRecord;
+    return await this.focusRecordModel.findByIdAndUpdate(id, focusRecordDto);
   }
 
   // 포커스 레코드 삭제
@@ -41,7 +35,6 @@ export class FocusRecordRepository {
     const focusRecord = await this.focusRecordModel.findById(id);
     const deletedFocusRecord = {
       ...focusRecord,
-      updatedAt: new Date(),
       isDeleted: true,
     };
     await this.focusRecordModel.findByIdAndUpdate(id, deletedFocusRecord);

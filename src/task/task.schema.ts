@@ -1,9 +1,13 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
 
 export type TaskDocument = Task & Document;
 
-@Schema()
+const options: SchemaOptions = {
+  timestamps: true
+}
+
+@Schema(options)
 export class Task {
   @Prop()
   id: string;
@@ -16,12 +20,6 @@ export class Task {
 
   @Prop({ default: false })
   isCompleted: boolean;
-
-  @Prop({ default: Date.now })
-  createdAt: Date;
-
-  @Prop({ default: Date.now })
-  updatedAt: Date;
 
   @Prop({ default: false })
   isDeleted: boolean;

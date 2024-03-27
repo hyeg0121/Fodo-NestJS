@@ -3,7 +3,5 @@ export interface FocusDto {
   userId: string;
   name: string;
   description: string;
-  createdAt: Date;
-  updatedAt: Date;
   isDeleted: boolean;
 }

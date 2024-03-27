@@ -4,7 +4,5 @@ export interface FocusRecordDto {
   concentrateSeconds: number;
   memo: string;
   uploadedImagePath: string;
-  createdAt: Date;
-  updatedAt: Date;
   isDeleted: boolean;
 }

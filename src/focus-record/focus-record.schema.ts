@@ -1,9 +1,13 @@
+import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
 import { Document, Schema as MongooseSchema } from 'mongoose';
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 export type FocusRecordDocument = FocusRecord & Document;
 
-@Schema()
+const options: SchemaOptions = {
+  timestamps: true
+}
+
+@Schema(options)
 export class FocusRecord {
   @Prop()
   id: string;
@@ -19,12 +23,6 @@ export class FocusRecord {
 
   @Prop()
   uploadedImagePath: string = "image";
-
-  @Prop({ default: Date.now })
-  createdAt: Date;
-
-  @Prop({ default: Date.now })
-  updatedAt: Date;
 
   @Prop({ default: false })
   isDeleted: boolean;

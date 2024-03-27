@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Task, TaskDocument } from './task.schema';
 import { Model } from 'mongoose';
 import { TaskDto } from './task.model';
+import { Task, TaskDocument } from './task.schema';
 
 @Injectable()
 export class TaskRepository {
@@ -25,16 +25,8 @@ export class TaskRepository {
 
   // 할 일 업데이트
   async updateTask(id: string, taskDto: TaskDto): Promise<TaskDto> {
-    const updatedTask = {
-      ...taskDto,
-      updatedAt: new Date(),
-    };
 
-    const result = await this.taskModel.findByIdAndUpdate(id, updatedTask, {
-      new: true,
-    });
-
-    return result ? result.toObject() : null;
+    return await this.taskModel.findByIdAndUpdate(id, taskDto);
   }
 
   // 할 일 삭제
@@ -42,7 +34,6 @@ export class TaskRepository {
     const task = await this.taskModel.findById(id);
     const deletedTask = {
       ...task,
-      updatedAt: new Date(),
       isDeleted: true,
     };
 
