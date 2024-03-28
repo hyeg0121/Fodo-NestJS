@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { CreateUserDto, UserDto } from "./user.model";
+import { SignUpUserDto } from "./dto/user.request.dto";
 import { User, UserDocument } from "./user.schema";
 
 @Injectable()
@@ -14,18 +14,20 @@ export class UserRepository {
   }
 
   // id로 유저 조회
-  async getUserById(id: string): Promise<UserDto> {
+  async getUserById(id: string): Promise<UserDocument> {
     return this.userModel.findById(id);
   }
 
   // 유저 생성
-  async createUser(userDto: CreateUserDto): Promise<UserDto> {
+  async createUser(userDto: SignUpUserDto): Promise<UserDocument> {
     return await this.userModel.create(userDto);
   }
 
-  // 유저 업데이트
-  async updateUser(id: string, userDto: UserDto) : Promise<UserDto> {
-    return await this.userModel.findByIdAndUpdate(id, userDto);
+  // 이메일로 유저 있는지 확인
+  async existsByEmail(email: string): Promise<any> {
+    const result = await this.userModel.exists({ email });
+    console.log(result);
+    return result;
   }
 
   // 유저 삭제
